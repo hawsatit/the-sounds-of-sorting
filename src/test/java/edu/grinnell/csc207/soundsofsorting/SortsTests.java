@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.soundsofsorting;
 
+import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.function.Consumer;
@@ -7,6 +8,10 @@ import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 
 import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
+import static edu.grinnell.csc207.soundsofsorting.sorts.Sorts.eventSort;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
 
 public class SortsTests {
     /**
@@ -33,70 +38,101 @@ public class SortsTests {
     }
 
     //original test on array of random numbers
-    public void testSort(Consumer<Integer[]> func) {
+
+    /**
+     *
+     * @param func
+     */
+    public void testSort(Function<Integer[], List<SortEvent<Integer>>> func) {
         Integer[] arr = makeTestArray();
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     //test on array of numbers with multiple repeats
-    public void testMultipleRepeats(Consumer<Integer[]> func){
+    public void testMultipleRepeats(Function<Integer[], List<SortEvent<Integer>>> func){
         Integer[] arr = {0 , 4 , 6, 2, 2, 6, 4, 5, 5, 5, 0, 0};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     //test on array of numbers with multiple repeats
-    public void testNegatives(Consumer<Integer[]> func){
+    public void testNegatives(Function<Integer[], List<SortEvent<Integer>>> func){
         Integer[] arr = {0 , -3, -27, -4, 6, 7, 2};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     //test on array of ascneding numbers (already sorted)
-    public void testAscending(Consumer<Integer[]> func){
+    public void testAscending(Function<Integer[], List<SortEvent<Integer>>> func){
         Integer[] arr = {0 , 1, 2, 3, 4, 5, 6, 7, 8};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     //test on array of descending numbers
-    public void testDescending(Consumer<Integer[]> func){
+    public void testDescending(Function<Integer[], List<SortEvent<Integer>>> func){
         Integer[] arr = {8, 7, 6, 5, 4, 3, 2, 1, 0};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
-
     //test on empty array
-    public void testEmptyArray(Consumer<Integer[]> func) {
+    public void testEmptyArray(Function<Integer[], List<SortEvent<Integer>>> func) {
         Integer[] arr = {};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
 
     //test on single-element array
-    public void testSingleElement(Consumer<Integer[]> func) {
+    public void testSingleElement(Function<Integer[], List<SortEvent<Integer>>> func) {
         Integer[] arr = {69};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
 
     //test on array with all identical elements
-    public void testAllSameElements(Consumer<Integer[]> func) {
+    public void testAllSameElements(Function<Integer[], List<SortEvent<Integer>>> func) {
         Integer[] arr = {7, 7, 7, 7, 7, 7, 7, 7};
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
     
     //test on large array
-    public void testLargeArray(Consumer<Integer[]> func) {
+    public void testLargeArray(Function<Integer[], List<SortEvent<Integer>>> func) {
         Integer[] arr = new Integer[1000];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 1000);
         }
-        func.accept(arr);
+        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+        List<SortEvent<Integer>> events = func.apply(arr);
+        eventSort(arr2, events);
         assertTrue(sorted(arr));
+        assertTrue(sorted(arr2));
     }
 
     @Test
