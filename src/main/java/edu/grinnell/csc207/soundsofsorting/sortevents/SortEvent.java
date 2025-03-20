@@ -4,6 +4,7 @@ import java.util.List;
 /**
  * SortEvents are events generated during sorting that allow for playback
  * of the logged sorting algorithm.
+ * @param <T>
  */
 public interface SortEvent<T> {
     /**
@@ -18,7 +19,7 @@ public interface SortEvent<T> {
     public List<Integer> getAffectedIndices();
 
     /**
-     * @return <code>true</code> iff this event is emphasized
+     * @return <code>true</code> if this event is emphasized
      */
     public boolean isEmphasized();
 }
