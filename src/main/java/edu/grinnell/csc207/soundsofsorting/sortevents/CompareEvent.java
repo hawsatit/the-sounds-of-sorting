@@ -23,7 +23,7 @@ public class CompareEvent<T> implements SortEvent<T> {
 
     @Override
     public List<Integer> getAffectedIndices() {
-        return List.of(index1, index2);
+        return Arrays.asList(index1, index2);
     }
 
     @Override
