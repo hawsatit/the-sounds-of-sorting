@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.soundsofsorting.sortevents;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class SwapEvent<T> implements SortEvent<T> {
 
     @Override
     public List<Integer> getAffectedIndices() {
-        return List.of(index1, index2);
+        return Arrays.asList(index1, index2);
     }
 
     /**
