@@ -1,16 +1,24 @@
 package edu.grinnell.csc207.soundsofsorting;
 
+import java.util.Random;
+
 /**
  * A collection of indices into a Scale object.
  * These indices are the subject of the various sorting algorithms
  * in the program.
  */
 public class NoteIndices {
+    
+    Integer[] noteIndicies;
+    boolean[] highlighted;
+    
     /**
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-        // TODO: fill me in!
+        this.highlighted = new boolean[n];
+        this.noteIndicies = new Integer[n];
+        initializeAndShuffle(n);
     }
     
     /**
@@ -19,14 +27,31 @@ public class NoteIndices {
      * initial starting point for the sorting process.
      * @param n the size of the scale object that these indices map into
      */
-    public void initializeAndShuffle(int n) {
-        // TODO: fill me in!
+    public void initializeAndShuffle(Integer n) {
+        for (int i = 0; i < this.noteIndicies.length; i++){
+            this.noteIndicies[i] = i;
+        }
+        
+        shuffle(this.noteIndicies);
+    }
+    
+    /**
+     * fisher yates shuffle method
+     * @param array 
+     */
+    public static void shuffle(Integer[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            int temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
     }
     
     /** @return the indices of this NoteIndices object */
     public Integer[] getNotes() { 
-        // TODO: fill me in!
-        return null;
+        return noteIndicies;
     }
     
     /**
@@ -34,7 +59,9 @@ public class NoteIndices {
      * @param index the index to highlight
      */
     public void highlightNote(int index) {
-        // TODO: fill me in
+        if (index >= 0 && index < highlighted.length) {
+            highlighted[index] = true;
+        }
     }
     
     /**
@@ -42,12 +69,13 @@ public class NoteIndices {
      * @return true if the given index is highlighted
      */
     public boolean isHighlighted(int index) {
-        // TODO: fill me in
-        return false;
+        return index >= 0 && index < highlighted.length && highlighted[index];
     }
     
     /** Clears all highlighted indices from this collection */
     public void clearAllHighlighted() {
-        // TODO: fill me in
+        for (int i = 0; i < this.highlighted.length; i++){
+            this.highlighted[i] = false;
+        }
     }
 }
