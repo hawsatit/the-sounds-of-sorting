@@ -6,9 +6,11 @@ import java.util.List;
 /**
  * A <code>CompareEvent</code> logs a comparison a sort makes between two
  * indices in the array.
+ *
  * @param <T>
  */
 public class CompareEvent<T> implements SortEvent<T> {
+
     private final int index1;
     private final int index2;
 
