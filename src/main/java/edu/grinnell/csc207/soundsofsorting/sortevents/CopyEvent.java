@@ -5,9 +5,11 @@ import java.util.List;
 
 /**
  * A <code>CopyEvent</code> logs a copy of a value into an index of the array.
+ *
  * @param <T>
  */
 public class CopyEvent<T> implements SortEvent<T> {
+
     private final T value;
     private final int destination;
 
