@@ -28,11 +28,27 @@ public class ArrayPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        
+        
         g.clearRect(0, 0, this.width, this.height);
+        
+        
         Integer[] indices = this.notes.getNotes();
         int panelWidth = this.width;
         int panelHeight = this.height;
+        
+        if (indices.length == 0){
+            return;
+        }
+        
+        
         int barWidth = panelWidth / indices.length;
+        
+        char indicies = (char) indices.length;
+        char[] indiciesArr = {indicies};
+        g.drawChars(indiciesArr, 50, 50, 50, 50);
+        
+        /*
 
         for (int i = 0; i < indices.length; i++) {
             int barHeight = (indices[i] / indices.length * panelHeight);
@@ -41,5 +57,9 @@ public class ArrayPanel extends JPanel {
 
             g.fillRect(x, y, barWidth, barHeight);
         }
+*/
+        
+        
+        
     }
 }
