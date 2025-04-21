@@ -12,7 +12,12 @@ public class CopyEvent<T> implements SortEvent<T> {
 
     private final T value;
     private final int destination;
-
+    
+    /**
+     * Initializes a copy event
+     * @param value
+     * @param destination 
+     */
     public CopyEvent(T value, int destination) {
         this.value = value;
         this.destination = destination;
