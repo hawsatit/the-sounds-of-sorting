@@ -60,6 +60,8 @@ public class ControlPanel extends JPanel {
                 return Sorts.mergeSort(arr);
             case ("Quick"):
                 return Sorts.quickSort(arr);
+            case ("Heap"):
+                return Sorts.heapSort(arr);
             default:
                 throw new IllegalArgumentException("generateEvents");
         }
@@ -111,7 +113,8 @@ public class ControlPanel extends JPanel {
             "Insertion",
             "Bubble",
             "Merge",
-            "Quick"
+            "Quick",
+            "Heap"
         });
         add(sorts);
 
@@ -153,15 +156,6 @@ public class ControlPanel extends JPanel {
                 // 2. Add in the compare events to the end of the list
                 Integer[] arrToSort = arr.clone();
                 List<SortEvent<Integer>> events = generateEvents(selectedSort, arrToSort);
-                List<SortEvent<Integer>> compareEvents = new ArrayList<>();
-                for (SortEvent<Integer> event : events) {
-                    if (!event.isEmphasized()) {
-                        compareEvents.add(event);
-                    }
-                }
-
-                events.removeAll(compareEvents);
-                events.addAll(compareEvents);
 
                 // NOTE: The Timer class repetitively invokes a method at a
                 //       fixed interval.  Here we are specifying that method
