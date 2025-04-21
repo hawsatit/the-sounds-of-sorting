@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
 import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
-import java.util.ArrayList;
 
 /**
  * The Control Panel houses the GUI for interacting with the Sounds of Sorting
