@@ -3,7 +3,6 @@ package edu.grinnell.csc207.soundsofsorting;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.Arrays;
 
 import javax.swing.JPanel;
 
@@ -51,7 +50,8 @@ public class ArrayPanel extends JPanel {
             int x = i * barWidth;
             int y = panelHeight - barHeight;
 
-            g.setColor(new Color(0, 255 - ((int) ((double) indices[i] / indices.length * 255)), (int) ((double) indices[i] / indices.length * 255)));
+            g.setColor(new Color(0, 255 - ((int) ((double) indices[i] / indices.length * 255)), 
+                    (int) ((double) indices[i] / indices.length * 255)));
             g.fillRect(x, y, barWidth, barHeight);
 
         }
