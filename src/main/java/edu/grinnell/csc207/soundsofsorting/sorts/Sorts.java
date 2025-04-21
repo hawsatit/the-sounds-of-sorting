@@ -307,7 +307,8 @@ public class Sorts {
 
         // Extract elements from the heap one by one
         for (int i = arr.length - 1; i > 0; i--) {
-            swap(arr, 0, i);
+            events.add(new SwapEvent<>(0, i));
+            new SwapEvent<>(0, i).apply(arr);
             makeHeap(arr, i, 0, events); // Heapify the reduced heap
         }
 
@@ -328,14 +329,18 @@ public class Sorts {
         int left = 2 * root + 1;
         int right = 2 * root + 2;
 
-        events.add(new CompareEvent<>(left, largest));
-        if (left < n && arr[left].compareTo(arr[largest]) > 0) {
-            largest = left;
+        if (left < n) {
+            events.add(new CompareEvent<>(left, largest));
+            if (arr[left].compareTo(arr[largest]) > 0) {
+                largest = left;
+            }
         }
 
-        events.add(new CompareEvent<>(right, largest));
-        if (right < n && arr[right].compareTo(arr[largest]) > 0) {
-            largest = right;
+        if (right < n) {
+            events.add(new CompareEvent<>(right, largest));
+            if (arr[right].compareTo(arr[largest]) > 0) {
+                largest = right;
+            }
         }
 
         // Swap and continue heapifying if the root is not the largest
