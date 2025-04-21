@@ -3,8 +3,6 @@ package edu.grinnell.csc207.soundsofsorting;
 import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.function.Consumer;
-
 import org.junit.jupiter.api.Test;
 
 import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
