@@ -13,7 +13,13 @@ public class CompareEvent<T> implements SortEvent<T> {
 
     private final int index1;
     private final int index2;
-
+    
+    /**
+     * initializes the compare event
+     * 
+     * @param index1
+     * @param index2 
+     */
     public CompareEvent(int index1, int index2) {
         this.index1 = index1;
         this.index2 = index2;
