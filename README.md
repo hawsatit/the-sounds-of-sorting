@@ -2,6 +2,14 @@
 
 Author: Tanadanai (Fui) Hawsatitam
 
+## Resubmission Changes
+Fixed some issues with Heap Sort (my sort) and added it to the control panel
+
+Synchronized the timing of the sound by not moving the compare events to the end anymore
+so the compare events sound is played during the sorting
+
+Fixed style errors
+
 ## Resources
 
 *   Apache NetBeans
